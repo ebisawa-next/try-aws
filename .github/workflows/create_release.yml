@@ -1,0 +1,16 @@
+name: Release PR
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+jobs:
+  create_pull_request:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Pull Request 🍣
+        uses: actions/github-script@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
